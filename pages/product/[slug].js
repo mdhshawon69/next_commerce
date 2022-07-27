@@ -10,9 +10,16 @@ import {
 
 import { client, urlFor } from "../../lib/client";
 import Product from "../../components/Product/Product";
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../../store/cartSlice";
 
 const ProductDetails = ({ product, products }) => {
   const [index, setIndex] = useState(0);
+  const dispatch = useDispatch();
+  const qty = useSelector((state) => state.cart.qty);
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  console.log(qty, cartItems);
+
   return (
     <div>
       <div className='product-detail-container'>
@@ -55,19 +62,26 @@ const ProductDetails = ({ product, products }) => {
           <div className='quantity'>
             <h3>Quantity:</h3>
             <p className='quantity-desc'>
-              <span className='minus' onClick=''>
+              <span
+                className='minus'
+                onClick={() => dispatch(cartActions.decQty())}>
                 <AiOutlineMinus />
               </span>
-              <span className='num' onClick=''>
-                0
-              </span>
-              <span className='plus' onClick=''>
+              <span className='num'>{qty}</span>
+              <span
+                className='plus'
+                onClick={() => dispatch(cartActions.incQty())}>
                 <AiOutlinePlus />
               </span>
             </p>
           </div>
           <div className='buttons'>
-            <button type='button' className='add-to-cart' onClick=''>
+            <button
+              type='button'
+              className='add-to-cart'
+              onClick={() =>
+                dispatch(cartActions.onAdd({ product: product, quantity: qty }))
+              }>
               Add to Cart
             </button>
             <button type='button' className='buy-now' onClick=''>
