@@ -98,9 +98,8 @@ width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
   gap: 15px;
-  margin: 20px 0 0;
+  margin-top: 20px;
   width: 100%;
 }
 .product-card{
@@ -338,8 +337,8 @@ text-align: end;
 .product-container{
   margin-top: 15px;
   overflow: auto;
-  max-height: 70vh;
-  padding: 20px 10px;
+max-height: 70vh;
+padding: 20px 10px;
 }
 .product{
   display: flex;
@@ -668,7 +667,6 @@ margin-top: 160px;
   }
  .hero-banner-container h3{
     font-size: 40px;
-    z-index: 9999;
   }
   .hero-banner-container button{
     margin-top: 90px;
@@ -718,6 +716,8 @@ margin-top: 160px;
 .top{
   flex-wrap: wrap;
   gap: 10px;
+
+
 }
 .item-desc .bottom{
   margin-top: 30px;
@@ -738,7 +738,7 @@ margin-top: 160px;
   font-size: 20px;
 }
 .track {
-  animation: marquee 25s linear infinite;
+  animation: marquee 10s linear infinite;
   width: 550%;
 }
 .success-wrapper, .cancel-wrapper{

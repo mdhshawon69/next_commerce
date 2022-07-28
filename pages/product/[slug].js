@@ -7,6 +7,7 @@ import {
   AiFillStar,
   AiOutlineStar,
 } from "react-icons/ai";
+import Head from "next/head";
 
 import { client, urlFor } from "../../lib/client";
 import Product from "../../components/Product/Product";
@@ -17,11 +18,19 @@ const ProductDetails = ({ product, products }) => {
   const [index, setIndex] = useState(0);
   const dispatch = useDispatch();
   const qty = useSelector((state) => state.cart.qty);
-  const cartItems = useSelector((state) => state.cart.cartItems);
-  console.log(qty, cartItems);
+
+  const buyNow = () => {
+    dispatch(cartActions.onAdd({ product: product, quantity: qty }));
+    dispatch(cartActions.showCart());
+  };
 
   return (
     <div>
+      <Head>
+        <title>{product.name}</title>
+        <meta name={product.name} content={product.details} />
+      </Head>
+
       <div className='product-detail-container'>
         <div>
           <div className='image-container'>
@@ -84,7 +93,7 @@ const ProductDetails = ({ product, products }) => {
               }>
               Add to Cart
             </button>
-            <button type='button' className='buy-now' onClick=''>
+            <button type='button' className='buy-now' onClick={buyNow}>
               Buy Now
             </button>
           </div>

@@ -100,6 +100,10 @@ const cartSlice = createSlice({
       state.totalQuantities = state.totalQuantities - foundProduct.quantity;
 
       state.cartItems = [...newCart];
+
+      toast.success(
+        `${foundProduct.name} is successfully removed form the cart`
+      );
     },
   },
 });
