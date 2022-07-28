@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -17,7 +18,7 @@ const HeroBanner = ({ bannerData }) => {
         />
 
         <div>
-          <Link href={`/product/ID/${bannerData.product}`}>
+          <Link href='/'>
             <button type='button'>{bannerData.buttonText}</button>
           </Link>
           <div className='desc'>
